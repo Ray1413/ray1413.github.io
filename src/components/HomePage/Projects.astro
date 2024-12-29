@@ -1,0 +1,33 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { ProjectCardProps } from '@/utils/types/project';
+import lcMap from '@/assets/lcMap.png';
+import toolsOnline from '@/assets/toolsOnline.png';
+
+const projectList: ProjectCardProps[] = [
+  {
+    title: 'LC Map',
+    content:
+      'LC Map is an interactive map application that displays various facilities of leisure and cultural services department. A search bar is available to help users easily filter facilities of interest. The goal of this project is to provides a convenient and intuitive way for users to discover facilities.',
+    imgMeta: lcMap,
+    demoLink: 'https://lc-map.ray1413.com',
+    sourceLink: 'https://github.com/Ray1413/lc-map',
+  },
+  {
+    title: 'Tools Online',
+    content:
+      'Tools Online is a website that provides online tools to user. It offers a convenient tool for converting PDF files into image files. Users can efficiently convert their PDF files into image files for various purposes.',
+    imgMeta: toolsOnline,
+    demoLink: 'https://tools.ray1413.com',
+    sourceLink: 'https://github.com/Ray1413/tools-online',
+  },
+];
+---
+
+<div>
+  <h1 class='mb-20 text-5xl text-center'>Projects 👨‍💻</h1>
+
+  <div class='p-0 md:p-0'>
+    {projectList.map((project, index) => <ProjectCard {...project} reverse={index % 2 != 0} />)}
+  </div>
+</div>

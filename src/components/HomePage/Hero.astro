@@ -1,0 +1,83 @@
+---
+import background from '@/assets/background.svg';
+import avatar from '@/assets/avatar.png';
+---
+
+<div class='hero min-h-screen'>
+  <img
+    class='absolute w-full h-full top-0 left-0 z-[-1] blur-3xl'
+    src={background.src}
+    alt=''
+    fetchpriority='high'
+  />
+  <div class='hero-content w-full flex-col lg:flex-row-reverse gap-10'>
+    <img src={avatar.src} class='max-w-xs rounded-lg shadow-2xl' />
+    <div class='grow'>
+      <h1 class='text-5xl font-bold main-title' data-text='Hello, my name is Ray.'>&nbsp;</h1>
+      <p
+        class='py-6 text-2xl sub-title'
+        data-text='I am a web developer. Currently focus on Nodejs, Nextjs, Reactjs and C#.'
+      >
+        &nbsp;
+      </p>
+      <button class='btn btn-primary'>Get Started</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import sleep from '@/utils/sleep';
+
+  const startType = async (
+    element: HTMLElement,
+    interval: number = 100,
+    keepCaret: boolean = true,
+    onEndFn?: Function
+  ) => {
+    const text = element.dataset['text'];
+    const fragment = document.createDocumentFragment();
+    const contentSpan = document.createElement('span');
+    const caretSpan = document.createElement('span');
+    caretSpan.classList.add('blink-caret');
+    fragment.append(contentSpan, caretSpan);
+    element.append(fragment);
+    if (text) {
+      for (let i = 0; i <= text.length; i++) {
+        contentSpan.textContent = text.substring(0, i);
+        await sleep(interval);
+      }
+    }
+    if (!keepCaret) {
+      caretSpan.remove();
+    }
+    if (onEndFn) {
+      onEndFn();
+    }
+  };
+
+  const mainTitleEl = document.querySelector<HTMLElement>('h1.main-title');
+  if (mainTitleEl) {
+    startType(mainTitleEl, 75, false, function () {
+      const subTitleEl = document.querySelector<HTMLElement>('p,sub-title');
+      if (subTitleEl) startType(subTitleEl);
+    });
+  }
+</script>
+
+<style>
+  :global(.blink-caret) {
+    border-left: 0.1em solid;
+    border-right: 0.1em solid;
+    animation: blink-caret 1.1s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-right-color: oklch(var(--p));
+    }
+  }
+</style>
