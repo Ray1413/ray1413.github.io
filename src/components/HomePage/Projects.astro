@@ -3,6 +3,7 @@ import ProjectCard from './ProjectCard.astro';
 import type { ProjectCardProps } from '@/utils/types/project';
 import lcMap from '@/assets/lcMap.png';
 import toolsOnline from '@/assets/toolsOnline.png';
+import puzzle from '@/assets/puzzle.webp';
 
 const projectList: ProjectCardProps[] = [
   {
@@ -20,6 +21,13 @@ const projectList: ProjectCardProps[] = [
     imgMeta: toolsOnline,
     demoLink: 'https://tools.ray1413.com',
     sourceLink: 'https://github.com/Ray1413/tools-online',
+  },
+  {
+    title: 'Jigsaw Puzzle',
+    content: 'A simple jigsaw puzzle game',
+    imgMeta: puzzle,
+    demoLink: 'https://puzzle.ray1413.com',
+    sourceLink: 'https://github.com/Ray1413/jigsaw-puzzle',
   },
 ];
 ---
