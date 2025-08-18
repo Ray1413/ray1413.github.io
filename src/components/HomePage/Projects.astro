@@ -41,7 +41,7 @@ const projectList: ProjectCardProps[] = [
 ---
 
 <div>
-  <h1 class='mb-20 text-5xl text-center'>Projects 👨‍💻</h1>
+  <h1 id='projects' class='mb-20 text-5xl text-center'>Projects 👨‍💻</h1>
 
   <div class='p-0 md:p-0'>
     {projectList.map((project, index) => <ProjectCard {...project} reverse={index % 2 != 0} />)}

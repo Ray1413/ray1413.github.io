@@ -20,7 +20,7 @@ import avatar from '@/assets/avatar.png';
       >
         &nbsp;
       </p>
-      <button class='btn btn-primary'>Get Started</button>
+      <button id='projects-btn' class='btn btn-primary'>Projects</button>
     </div>
   </div>
 </div>
@@ -61,6 +61,12 @@ import avatar from '@/assets/avatar.png';
       const subTitleEl = document.querySelector<HTMLElement>('p,sub-title');
       if (subTitleEl) startType(subTitleEl);
     });
+  }
+
+  const projectsBtnEl = document.getElementById('projects-btn');
+  const projectEl = document.getElementById('projects');
+  if (projectsBtnEl && projectEl) {
+    projectsBtnEl.addEventListener('click', () => projectEl.scrollIntoView({ behavior: 'smooth' }));
   }
 </script>
 
